@@ -26,3 +26,4 @@ map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window W
 
 map("t", "<Esc>", "<C-\\><C-n>", { desc = "exit terminal mode" })
 
+map("n", "<C-_>", "<cmd>help<cr>", { desc = "Increase Window Width" })
