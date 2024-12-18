@@ -5,21 +5,21 @@ return {
         cmd = "Neotree",
         keys = {
             {
-                "<leader>fe",
+                "<leader>ee",
                 function()
                     require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd() })
                 end,
                 desc = "Explorer NeoTree"
             },
             {
-                "<leader>ge",
+                "<leader>eg",
                 function()
                     require("neo-tree.command").execute({ toggle = true, source = "git_status" })
                 end,
                 desc = "NeoTree Git"
             },
             {
-                "<leader>be",
+                "<leader>eb",
                 function()
                     require("neo-tree.command").execute({ toggle = true, source = "buffers" })
                 end,
@@ -30,21 +30,6 @@ return {
             "nvim-lua/plenary.nvim",
             "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
             "MunifTanjim/nui.nvim",
-            -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
---             {
---                 "s1n7ax/nvim-window-picker",
---                 version = "2.*",
---                 opts = {
---                     filter_rules = {
---                         include_current_win = false,
---                         autoselect_one = true,
---                         bo = {
---                             filetype = { "neo-tree", "neo-tree-popup", "notify" },
---                             buftype = { "terminal", "quickfix" },
---                         }
---                     }
---                 }
---             }
         },
         opts = {
             sources = { "filesystem", "buffers", "git_status" },
