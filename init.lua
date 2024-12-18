@@ -12,8 +12,21 @@ vim.opt.shellquote = '"'
 vim.opt.shellxquote = ""
 vim.opt.termguicolors = true
 
+-- Open neotree
 vim.api.nvim_create_autocmd("VimEnter", {
     command = "Neotree toggle",
 })
 
+-- Set title to name of buffer
+vim.api.nvim_create_autocmd("VimEnter", {
+    command = "set title"
+})
+
+vim.api.nvim_create_autocmd("VimEnter", {
+    command = "colorscheme flexoki",
+})
+
+vim.g.zig_fmt_autosave = 0
+
 require("config.keymaps")
+
