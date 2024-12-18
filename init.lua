@@ -10,3 +10,10 @@ vim.opt.shell = [["C:\Program Files\Git\bin\bash.exe"]]
 vim.opt.shellcmdflag = "-c"
 vim.opt.shellquote = '"'
 vim.opt.shellxquote = ""
+vim.opt.termguicolors = true
+
+vim.api.nvim_create_autocmd("VimEnter", {
+    command = "Neotree toggle",
+})
+
+require("config.keymaps")
