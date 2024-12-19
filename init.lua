@@ -5,6 +5,7 @@ vim.opt.number = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+vim.opt.ic = true
 
 vim.opt.shell = [["C:\Program Files\Git\bin\bash.exe"]]
 vim.opt.shellcmdflag = "-c"
@@ -30,3 +31,4 @@ vim.g.zig_fmt_autosave = 0
 
 require("config.keymaps")
 
+require("config.zls")

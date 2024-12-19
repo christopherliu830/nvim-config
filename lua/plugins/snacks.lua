@@ -9,6 +9,5 @@ return {
     },
     keys = {
         { "<leader>n", function() Snacks.notifier.show_history() end, desc = "Notification Historyh" },
-        { "<leader>st", function() Snacks.terminal() end, desc = "Toggle Terminal" },
     },
 }
