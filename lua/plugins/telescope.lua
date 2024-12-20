@@ -5,22 +5,30 @@ return {
     keys = {
         {
             "<leader>ff",
-            require("telescope.builtin").git_files,
+            function()
+                require("telescope.builtin").git_files()
+            end,
             desc = "Telescope find files"
         },
         {
             "<leader>fg",
-            require("telescope.builtin").live_grep,
+            function()
+                require("telescope.builtin").live_grep()
+            end,
             desc = "Telescope live grep"
         },
         {
             "<leader>fb",
-            require("telescope.builtin").buffers,
+            function()
+                require("telescope.builtin").buffers()
+            end,
             desc = "Telescope buffers"
         },
         {
             "<leader>fh",
-            require("telescope.builtin").help_tags,
+            function()
+                require("telescope.builtin").help_tags()
+            end,
             desc = "Telescope help tags"
         },
     },
@@ -28,7 +36,7 @@ return {
         defaults = {
             mappings = {
                 n = {
-                    ["q"] = require("telescope.actions").close,
+                    ["q"] = function() require("telescope.actions").close() end,
                 }
             },
         }
