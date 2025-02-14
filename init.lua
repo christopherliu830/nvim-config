@@ -6,17 +6,9 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.ic = true
-
-vim.opt.shell = [["C:\Program Files\Git\bin\bash.exe"]]
-vim.opt.shellcmdflag = "-c"
-vim.opt.shellquote = '"'
-vim.opt.shellxquote = ""
 vim.opt.termguicolors = true
-
--- Open neotree
-vim.api.nvim_create_autocmd("VimEnter", {
-    command = "Neotree toggle",
-})
+vim.opt.hlsearch = false
+vim.opt.rnu = true
 
 -- Set title to name of buffer
 vim.api.nvim_create_autocmd("VimEnter", {
@@ -29,6 +21,16 @@ vim.api.nvim_create_autocmd("VimEnter", {
 
 vim.g.zig_fmt_autosave = 0
 
-require("config.keymaps")
+if vim.g.neovide then
+end
 
+vim.diagnostic.config({
+    virtual_text = true,
+    signs = true,
+    float = { border = "rounded" },
+    update_in_insert = true,
+})
+
+require("config.keymaps")
 require("config.zls")
+require("config.luals")
