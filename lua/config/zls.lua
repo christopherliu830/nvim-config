@@ -1,9 +1,13 @@
 local map = vim.keymap.set
+
 vim.lsp.config["zls"] = {
     cmd = { "zls" },
     filetypes = { "zig" },
     root_markers = { "build.zig" },
     settings = {
+        zls = {
+            enable_autofix = true
+        }
     }
 }
 
@@ -12,15 +16,47 @@ vim.lsp.enable("zls")
 vim.api.nvim_create_autocmd("BufEnter", {
     pattern = "*.zig",
     callback = function(args)
-        local cwd = vim.fn.expand("%:p:h")
         map("n", "<F5>", function() 
-            Snacks.terminal.toggle("zig build --watch", {
-                 cwd = cwd,
+            Snacks.terminal.toggle("zig build", {
                  win = { position = "right" },
                  auto_insert = false,
                  start_insert = false,
             })
         end, { desc = "Last Tab" })
+        map("n", "<C-Enter>", function() 
+            Snacks.terminal.toggle("zig build run", {
+                interactive = true,
+                auto_close = false,
+            })
+        end, { desc = "Last Tab" })
     end,
 })
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = {"*.zig, *.zon"},
+    callback = function(ev)
+        vim.lsp.buf.format()
+        vim.lsp.buf.code_action({
+            context = { only = { "source.fixAll" }, diagnostics = {}},
+            apply = true,
+        })
+    end
+});
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+    pattern = {"*.zig, *.zon"},
+    callback = function(ev)
+        local term, open = Snacks.terminal.get("zig build", {
+             win = { position = "right" },
+             auto_insert = false,
+             start_insert = false,
+        })
+        term:destroy()
+        Snacks.terminal.toggle("zig build", {
+             win = { position = "right" },
+             auto_insert = false,
+             start_insert = false,
+        })
+    end
+});
 
