@@ -16,13 +16,16 @@ vim.api.nvim_create_autocmd("VimEnter", {
 })
 
 vim.api.nvim_create_autocmd("VimEnter", {
-    command = "colorscheme flexoki",
+    command = "colorscheme kanagawa-dragon",
 })
 
 vim.g.zig_fmt_autosave = 0
 
 if vim.g.neovide then
+    vim.o.guifont = "GeistMono Nerd Font Mono:12"
 end
+
+
 
 vim.diagnostic.config({
     virtual_text = true,
